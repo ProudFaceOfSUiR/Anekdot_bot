@@ -1,6 +1,7 @@
 import random
 import telebot
 import config
+from balaboba import balaboba
 
 bot = telebot.TeleBot(config.token)
 
@@ -15,12 +16,13 @@ def welcome(message):
 
 @bot.message_handler(content_types=['text'])
 def text(message):
-    if message.text == "Привет":
+    if message.text == "привет":
         bot.send_message(message.chat.id, "Привет, я расскажу тебе анекдот!"
                                           " Напиши мне номер одного из следующих ключевых слов,"
                                           " и я расскажу тебе анекдот на эту тему:")
         bot.send_message(message.chat.id, "1.Случайный анекдот с чёрным юмором\n2.Случайный добрый анекдот\n3.Коза\n"
-                                          "4.Ананасы\n5.Чурки")
+                                          "4.Ананасы\n5.Чурки\n6.Анекдот от балабобы, после номера напиши начало "
+                                          "истории, которую продолжит нейросеть")
     elif message.text == "3":
         bot.send_message(message.chat.id, repr(config.joke1))
         bot.send_message(message.chat.id, 'Если хочешь вернуться к выбору, напиши мне "Привет"')
@@ -35,6 +37,9 @@ def text(message):
         bot.send_message(message.chat.id, 'Если хочешь вернуться к выбору, напиши мне "Привет"')
     elif message.text == "5":
         bot.send_message(message.chat.id, repr(config.joke3))
+        bot.send_message(message.chat.id, 'Если хочешь вернуться к выбору, напиши мне "Привет"')
+    elif message.text[0] == "6":
+        bot.send_message(message.chat.id, repr(balaboba(message.text[1:])))
         bot.send_message(message.chat.id, 'Если хочешь вернуться к выбору, напиши мне "Привет"')
     else:
         bot.send_message(message.chat.id, "Не понимаю о чём ты, напиши: 'Привет'")
