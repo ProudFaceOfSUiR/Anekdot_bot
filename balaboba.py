@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 from requests import Session
 
-
-
 def _fetch(query: str, intro: int, session: Session) -> str:
     r = session.post(
         "https://yandex.ru/lab/api/yalm/text3",
@@ -37,6 +35,3 @@ def balaboba(query: str, *, intro: int = 0, session: Session = None) -> str:
         return _fetch(query, intro, session)
     with Session() as session:
         return _fetch(query, intro, session)
-
-
-print(balaboba("привет",intro=9))
