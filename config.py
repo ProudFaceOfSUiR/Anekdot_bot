@@ -54,4 +54,5 @@ class Neuronjoke(Joke):
     def generate(self, text):
         '''Метод, генерирующий ответ от балаболы
         @:param text пользователь вводит то, что должна продолжить нейросеть'''
-        self.text = balaboba(text).replace("\n"," ")
+        answer = balaboba(text).replace("\n"," ")
+        self.text = str(answer)
