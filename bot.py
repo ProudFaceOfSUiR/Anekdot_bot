@@ -6,9 +6,7 @@ bot = telebot.TeleBot(config.token)
 
 @bot.message_handler(commands=['start'])
 def welcome(message):
-    '''
-    Функция - обработчик стартового запроса, дает юзеру всю инфу
-    '''
+    '''Функция - обработчик стартового запроса, дает юзеру всю инфу'''
     bot.send_message(message.chat.id, "Привет, я расскажу тебе анекдот! Напиши мне одно из следующих ключевых слов"
                                       " и я расскажу тебе анекдот на эту тему:")
     bot.send_message(message.chat.id, "1.Случайный анекдот с чёрным юмором\n2.Случайный добрый анекдот\n"
@@ -18,10 +16,6 @@ def welcome(message):
 peaceful_joke = config.Peacefuljoke()
 bad_joke = config.Badjoke()
 neuron_joke = config.Neuronjoke()
-
-'''
-
-'''
 
 @bot.message_handler(content_types=['text'])
 def text(message):
